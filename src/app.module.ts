@@ -8,6 +8,9 @@ import { AuthModule } from './auth/auth.module';
 import { getMongoDbConfig } from './config/mongo.config';
 import { UserModule } from './user/user.module';
 import { GenreModule } from './genre/genre.module';
+import { FileModule } from './file/file.module';
+import { ActorModule } from './actor/actor.module';
+import { MovieModule } from './movie/movie.module';
 @Module({
 	imports: [
 		ConfigModule.forRoot(),
@@ -19,6 +22,9 @@ import { GenreModule } from './genre/genre.module';
 		AuthModule,
 		UserModule,
 		GenreModule,
+		FileModule,
+		ActorModule,
+		MovieModule,
 	],
 	controllers: [AppController],
 	providers: [AppService],

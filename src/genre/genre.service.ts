@@ -12,7 +12,9 @@ export class GenreService {
 	) {}
 
 	async bySlug(slug: string) {
-		return this.genreModel.findOne({ slug }).exec();
+		const doc = await this.genreModel.findOne({ slug }).exec();
+		if (!doc) throw new NotFoundException('Genre not found');
+		return doc;
 	}
 
 	async getAll(searchTerm?: string) {
@@ -44,8 +46,8 @@ export class GenreService {
 		const collections = genres;
 		return collections;
 	}
+	
 	/* Admin place */
-
 	async byId(_id: string) {
 		const genre = await this.genreModel.findById(_id);
 		if (!genre) {

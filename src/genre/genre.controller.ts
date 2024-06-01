@@ -35,7 +35,7 @@ export class GenreController {
 	}
 	@Get(':id')
 	@Auth('admin')
-	async getUser(@Param('id', idValidationPipe) id: string) {
+	async get(@Param('id', idValidationPipe) id: string) {
 		return this.genreService.byId(id);
 	}
 
