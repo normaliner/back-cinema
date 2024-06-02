@@ -1,5 +1,6 @@
-import { prop } from '@typegoose/typegoose';
+import { Ref, prop } from '@typegoose/typegoose';
 import { Base, TimeStamps } from '@typegoose/typegoose/lib/defaultClasses';
+import { MovieModel } from 'src/movie/movie.model';
 
 export interface UserModel extends Base {}
 
@@ -10,6 +11,6 @@ export class UserModel extends TimeStamps {
 	password: string;
 	@prop({ default: false })
 	isAdmin: boolean;
-	@prop({ default: [] })
-	favourites?: [];
+	@prop({ default: [], ref: () => MovieModel })
+	favourites?: Ref<MovieModel>[];
 }
